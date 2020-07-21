@@ -52,6 +52,8 @@ public class CustomMqttClient {
         options.setConnectionTimeout(mqttParam.getConnectionTimeout());
         options.setKeepAliveInterval(mqttParam.getKeepAliveInterval());
         String sslFilePath = mqttParam.getSslFilePath();
+        // the property is default true
+        options.setHttpsHostnameVerificationEnabled(false);
         if (sslFilePath != null && !sslFilePath.isEmpty()) {
             try {
                 options.setSocketFactory(SslUtil.getSocketFactory(sslFilePath));

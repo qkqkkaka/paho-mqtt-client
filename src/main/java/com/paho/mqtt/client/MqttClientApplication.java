@@ -18,13 +18,13 @@ public class MqttClientApplication {
         MqttParam mqttParam = new MqttParam.Builder()
                 .url("tcp://127.0.0.1:1883")
                 .clientId("client")
-                .userName("username")
+                .userName("userName")
                 .password("password".toCharArray())
                 .mqttVersion(MqttConnectOptions.MQTT_VERSION_3_1_1)
                 .cleanSession(true)
                 .connectionTimeout(20)
                 .keepAliveInterval(30)
-                //.socketFactory("src/main/resources/certificate-name.pem")
+                .socketFactory("src/main/resources/certificate-name.pem")
                 .build();
         CustomMqttClient mqttClient = new CustomMqttClient(mqttParam);
         mqttClient.connect(new MqttCallbackImpl(mqttClient), "$msg/topic");
